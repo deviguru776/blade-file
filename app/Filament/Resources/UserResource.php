@@ -22,9 +22,11 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Forms\Components\TextInput::make('name')->required(),
+            Forms\Components\TextInput::make('email')->email()->required(),
+          
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -34,7 +36,7 @@ class UserResource extends Resource
 
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\ImageColumn::make('image'),
+                
 
             ])
             ->filters([
